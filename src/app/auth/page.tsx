@@ -4,6 +4,7 @@ import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 import { BsGoogle } from "react-icons/bs";
 import AuthInput from "./components/AuthInput";
 import AuthSeparator from "./components/AuthSeparator";
@@ -30,10 +31,10 @@ export default function AuthPage() {
       redirect: false,
     }).then((callback) => {
       if (callback?.error) {
-        console.log("Failed");
+        toast.error("Invalid credentials");
       }
       if (callback?.ok) {
-        console.log("success");
+        router.push("/");
       }
     });
   };
@@ -46,7 +47,8 @@ export default function AuthPage() {
         await axios.post("/api/register", formData);
       }
       signInCredentials();
-    } catch (error) {
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message);
       console.log(error);
     }
   };
