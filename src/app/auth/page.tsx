@@ -34,6 +34,7 @@ export default function AuthPage() {
         toast.error("Invalid credentials");
       }
       if (callback?.ok) {
+        toast.success("Success! Redirecting...");
         router.push("/");
       }
     });
@@ -72,73 +73,75 @@ export default function AuthPage() {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-100 p-4">
-      <form
-        onSubmit={handleSubmit}
-        className="mx-auto flex w-full flex-col gap-5  rounded-lg bg-white p-6 md:w-1/2 lg:w-1/3 "
-      >
-        <h1 className="text-center text-lg font-bold">
-          {isLogin ? "Login" : "Register"}
-        </h1>
+    session?.status === "unauthenticated" && (
+      <main className="flex min-h-screen items-center justify-center bg-gray-100 p-4">
+        <form
+          onSubmit={handleSubmit}
+          className="mx-auto flex w-full flex-col gap-5  rounded-lg bg-white p-6 md:w-1/2 lg:w-1/3 "
+        >
+          <h1 className="text-center text-lg font-bold">
+            {isLogin ? "Login" : "Register"}
+          </h1>
 
-        {!isLogin && (
+          {!isLogin && (
+            <AuthInput
+              label="Name"
+              type="text"
+              id="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          )}
+
           <AuthInput
-            label="Name"
-            type="text"
-            id="name"
-            value={formData.name}
+            label="Email"
+            type="email"
+            id="email"
+            value={formData.email}
             onChange={handleChange}
           />
-        )}
+          <AuthInput
+            label="Password"
+            type="password"
+            id="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
 
-        <AuthInput
-          label="Email"
-          type="email"
-          id="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <AuthInput
-          label="Password"
-          type="password"
-          id="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-
-        <button
-          type="submit"
-          className="rounded-md bg-gray-200 p-2 text-sm font-semibold text-gray-600
+          <button
+            type="submit"
+            className="rounded-md bg-gray-200 p-2 text-sm font-semibold text-gray-600
            hover:bg-gray-100"
-        >
-          {isLogin ? "Sign In" : "Sign Up"}
-        </button>
+          >
+            {isLogin ? "Sign In" : "Sign Up"}
+          </button>
 
-        <AuthSeparator />
+          <AuthSeparator />
 
-        <button
-          type="button"
-          onClick={handleGoogleLogin}
-          className="flex items-center justify-center gap-4 rounded-md p-2 font-semibold 
-        text-gray-500 ring-1 ring-gray-300"
-        >
-          <BsGoogle />
-          Google
-        </button>
-
-        <div className="space-x-1 text-center text-sm text-gray-500">
-          <span>{isLogin ? "New here?" : "Already have an account?"}</span>
           <button
             type="button"
-            onClick={() => {
-              setIsLogin((prev) => !prev);
-            }}
-            className="underline"
+            onClick={handleGoogleLogin}
+            className="flex items-center justify-center gap-4 rounded-md p-2 font-semibold 
+        text-gray-500 ring-1 ring-gray-300"
           >
-            {isLogin ? "Register" : "Login"}
+            <BsGoogle />
+            Google
           </button>
-        </div>
-      </form>
-    </main>
+
+          <div className="space-x-1 text-center text-sm text-gray-500">
+            <span>{isLogin ? "New here?" : "Already have an account?"}</span>
+            <button
+              type="button"
+              onClick={() => {
+                setIsLogin((prev) => !prev);
+              }}
+              className="underline"
+            >
+              {isLogin ? "Register" : "Login"}
+            </button>
+          </div>
+        </form>
+      </main>
+    )
   );
 }
