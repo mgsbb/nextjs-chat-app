@@ -39,7 +39,7 @@ const MenuItems = ({ user }: { user: User | null }) => {
         </button>
       </div>
 
-      <Link href={`profile/${user?.id}`}>
+      <Link href={`/profile/${user?.id}`}>
         <Avatar src={user?.image || null} />
       </Link>
     </div>

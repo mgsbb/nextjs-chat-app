@@ -1,7 +1,7 @@
 import prisma from "@/libs/prisma";
 import getSession from "./getSession";
 
-const getCurrentUser = async () => {
+const getUserById = async (userId: string) => {
   try {
     const session = await getSession();
 
@@ -9,9 +9,9 @@ const getCurrentUser = async () => {
       return null;
     }
 
-    const currentUser = await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: {
-        email: session.user.email as string,
+        id: userId,
       },
       select: {
         id: true,
@@ -21,15 +21,15 @@ const getCurrentUser = async () => {
       },
     });
 
-    if (!currentUser) {
+    if (!user) {
       return null;
     }
 
-    return currentUser;
+    return user;
   } catch (error) {
     console.log(error);
     return null;
   }
 };
 
-export default getCurrentUser;
+export default getUserById;
