@@ -14,7 +14,7 @@ const ConversationPage = async ({
   const messages = await getMessages(conversationId);
 
   return (
-    <div className="flex w-full flex-col">
+    <div className="flex h-screen w-full flex-col">
       <Header user={otherUser} />
       <Body messages={messages!} />
       <MessageInput />

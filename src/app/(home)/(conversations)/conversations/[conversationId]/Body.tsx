@@ -1,12 +1,12 @@
 import { Message } from "@prisma/client";
 import MessageBox from "./MessageBox";
 
-const Body = ({ messages }: { messages: Message[] }) => {
+const Body = async ({ messages }: { messages: Message[] }) => {
   return (
-    <div className="h-full p-4">
-      <div className="flex flex-col gap-3">
+    <div className=" overflow-y-scroll p-4">
+      <div className="flex flex-col  gap-4">
         {messages.map((message) => (
-          <MessageBox key={message.id} message={message} />
+          <MessageBox message={message} key={message.id} />
         ))}
       </div>
     </div>
