@@ -1,13 +1,21 @@
 "use client";
+import axios from "axios";
 import { Send } from "lucide-react";
+import { useParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 const MessageInput = () => {
+  const params = useParams();
   const [message, setMessage] = useState("");
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(message);
+    axios.post("/api/messages", {
+      message,
+      conversationId: params.conversationId,
+    });
   };
+
   return (
     <div className=" border-t border-gray-300 p-4">
       <form onSubmit={handleSubmit} className="flex items-center gap-4">

@@ -1,7 +1,16 @@
-import React from "react";
+import { Message } from "@prisma/client";
+import MessageBox from "./MessageBox";
 
-const Body = () => {
-  return <div className="h-full">Body</div>;
+const Body = ({ messages }: { messages: Message[] }) => {
+  return (
+    <div className="h-full p-4">
+      <div className="flex flex-col gap-3">
+        {messages.map((message) => (
+          <MessageBox key={message.id} message={message} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Body;
