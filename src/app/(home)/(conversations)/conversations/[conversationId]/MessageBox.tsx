@@ -11,7 +11,7 @@ const MessageBox = async ({ message }: { message: Message }) => {
           ? "self-end bg-purple-500 text-white"
           : "bg-gray-300"
       } 
-    f w-max max-w-[700px] rounded-md  p-3`}
+     w-max max-w-[70%] rounded-md p-3  lg:max-w-[700px]`}
     >
       {message.body}
     </span>

@@ -27,12 +27,13 @@ const MessageInput = () => {
             placeholder="Enter message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full rounded-md border bg-gray-300/80 p-2 focus:outline-none"
+            className="w-full rounded-md border bg-gray-200 p-2 
+            placeholder:text-gray-500 focus:outline-none"
           />
         </div>
 
-        <button className="rounded-md bg-gray-200 p-2 hover:bg-gray-300">
-          <Send className="text-gray-500" />
+        <button className="rounded-md bg-purple-500 p-2 hover:bg-purple-600">
+          <Send className="text-gray-100" />
         </button>
       </form>
     </div>
