@@ -13,12 +13,6 @@ const getCurrentUser = async () => {
       where: {
         email: session.user.email as string,
       },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        image: true,
-      },
     });
 
     if (!currentUser) {

@@ -1,7 +1,7 @@
 import prisma from "@/libs/prisma";
 import getSession from "./getSession";
 
-const getUserById = async (userId: string) => {
+const getConversationById = async (conversationId: string) => {
   try {
     const session = await getSession();
 
@@ -9,21 +9,21 @@ const getUserById = async (userId: string) => {
       return null;
     }
 
-    const user = await prisma.user.findUnique({
+    const conversation = await prisma.conversation.findUnique({
       where: {
-        id: userId,
+        id: conversationId,
       },
     });
 
-    if (!user) {
+    if (!conversation) {
       return null;
     }
 
-    return user;
+    return conversation;
   } catch (error) {
     console.log(error);
     return null;
   }
 };
 
-export default getUserById;
+export default getConversationById;

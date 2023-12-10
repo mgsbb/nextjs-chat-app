@@ -16,7 +16,7 @@ const UsersList = async () => {
 
       <div className="flex flex-col gap-2">
         {users.map((user) => (
-          <UserBox user={user} />
+          <UserBox key={user.id} user={user} />
         ))}
       </div>
     </div>
