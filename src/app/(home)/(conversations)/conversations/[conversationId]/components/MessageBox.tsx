@@ -1,9 +1,13 @@
-import getCurrentUser from "@/actions/getCurrentUser";
-import { Message } from "@prisma/client";
+import { Message, User } from "@prisma/client";
 import React from "react";
 
-const MessageBox = async ({ message }: { message: Message }) => {
-  const currentUser = await getCurrentUser();
+const MessageBox = ({
+  message,
+  currentUser,
+}: {
+  message: Message;
+  currentUser: User;
+}) => {
   return (
     <span
       className={`${

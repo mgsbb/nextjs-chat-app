@@ -24,7 +24,8 @@ const UsersList = ({ users }: { users: User[] }) => {
 
   return (
     <div
-      className={`border-gray-300 p-8 lg:visible lg:min-h-screen lg:min-w-[25%] lg:border-r lg:p-4`}
+      className={`overflow-y-auto border-gray-300 p-8 lg:visible lg:h-screen
+       lg:min-w-[25%] lg:border-r lg:p-4`}
     >
       <div className="flex items-center justify-between pb-4">
         <h2 className="text-center text-lg font-bold">Messages</h2>

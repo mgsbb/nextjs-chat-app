@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import getCurrentUser from "@/actions/getCurrentUser";
 import prisma from "@/libs/prisma";
+import { pusherServer } from "@/libs/pusher";
 
 export async function POST(request: Request) {
   try {
@@ -41,6 +42,8 @@ export async function POST(request: Request) {
         messages: true,
       },
     });
+
+    pusherServer.trigger(conversationId, "messages:new", newMessage);
 
     return NextResponse.json({ message }, { status: 201 });
   } catch (error) {

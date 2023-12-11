@@ -14,6 +14,7 @@ const MessageInput = () => {
       message,
       conversationId: params.conversationId,
     });
+    setMessage("");
   };
 
   return (
