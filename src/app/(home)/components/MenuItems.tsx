@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { signOut } from "next-auth/react";
 import { LogOut, MessagesSquare, Settings } from "lucide-react";
-import Avatar from "./Avatar";
+import Avatar from "@/app/components/Avatar";
 import { User } from "@prisma/client";
 import { usePathname } from "next/navigation";
 

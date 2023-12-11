@@ -1,7 +1,7 @@
 "use client";
 
 import { User } from "@prisma/client";
-import Avatar from "./Avatar";
+import Avatar from "@/app/components/Avatar";
 import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/navigation";

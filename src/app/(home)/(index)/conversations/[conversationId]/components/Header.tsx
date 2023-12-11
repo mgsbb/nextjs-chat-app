@@ -1,4 +1,4 @@
-import Avatar from "@/app/(home)/components/Avatar";
+import Avatar from "@/app/components/Avatar";
 import { User } from "@prisma/client";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
