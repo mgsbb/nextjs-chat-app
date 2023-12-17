@@ -37,7 +37,7 @@ const UsersList = ({ users }: { users: User[] }) => {
       >
         <div className="flex items-center justify-between pb-4">
           <h2 className="text-center text-lg font-bold">Messages</h2>
-          <button className="w-min" onClick={() => setIsModalOpen(true)}>
+          <button className="hidden w-min" onClick={() => setIsModalOpen(true)}>
             <UserPlus size={20} />
           </button>
         </div>

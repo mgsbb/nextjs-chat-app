@@ -74,7 +74,17 @@ const UsersSearchModal = ({
           >
             Search results
           </h2>
-          {results?.map((user) => <UserResultBox key={user.id} user={user} />)}
+          <div className="flex flex-col gap-4">
+            {results?.length !== 0 ? (
+              results?.map((user) => (
+                <UserResultBox key={user.id} user={user} />
+              ))
+            ) : (
+              <div className="text-center text-sm text-gray-500">
+                No results found
+              </div>
+            )}
+          </div>
         </Dialog.Panel>
       </div>
     </Dialog>

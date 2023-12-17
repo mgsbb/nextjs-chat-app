@@ -37,7 +37,7 @@ export async function GET(request: NextRequest) {
         return user;
       }
     });
-    console.log(results);
+    // console.log(results);
 
     return NextResponse.json({ users: results }, { status: 200 });
   } catch (error) {
