@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const regExp = new RegExp(searchQuery as string, "i");
 
     if (!session?.user?.email) {
-      return [];
+      return NextResponse.json({ users: [] });
     }
 
     // find all users except current session user

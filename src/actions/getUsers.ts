@@ -1,7 +1,7 @@
 import prisma from "@/libs/prisma";
 import getSession from "./getSession";
 
-const getUsers = async (search: string) => {
+const getUsers = async () => {
   try {
     const session = await getSession();
 

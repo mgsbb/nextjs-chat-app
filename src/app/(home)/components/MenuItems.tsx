@@ -37,7 +37,7 @@ const MenuItems = ({ user }: { user: User | null }) => {
           </button>
         </Link>
 
-        <Link href="/settings" className="w-full">
+        <Link href="/" className="w-full">
           <button className="flex w-full justify-center rounded-lg hover:bg-gray-200">
             <Settings size={36} className=" p-2 text-gray-700 " />
           </button>
@@ -51,7 +51,7 @@ const MenuItems = ({ user }: { user: User | null }) => {
         </button>
       </div>
 
-      <Link href={`/profile/${user?.id}`} className="hidden lg:block">
+      <Link href={`/`} className="hidden lg:block">
         <Avatar src={user?.image || null} />
       </Link>
     </div>
